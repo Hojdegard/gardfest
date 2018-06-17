@@ -1,0 +1,22 @@
+<div class="row">
+        <div class="col-md-12">
+            <p>Antalet anmälda: <%= attending %></p>
+            <table style="width:100%" id="attendeesList" data-url="/del">
+                <col style="width:50%">
+                <col style="width:40%">
+                <col style="width:10%">
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Delete</th>
+                </tr>
+                <% attendees.forEach(function(attendee) {%>
+                    <tr id="row-<%= attendee._id %>">
+                        <td><%= attendee.enroledName %></td>
+                        <td><%= attendee.dateString %></td>
+                        <td><button class="deletButton" id="button-<%= attendee._id %>">Delete</button></td>
+                    </tr>
+                <% }); %>
+            </table>
+        </div>
+    </div>

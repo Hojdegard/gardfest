@@ -1,0 +1,31 @@
+    <button class="showFormButton" id="eventshowform">Föreslå event</button>
+    <div id="eventFormDiv" style="display: none;">
+        <form method="post" id="eventForm" action="/event/add" class="eventform" >
+            <div>
+                <input type="text" class="inputText formwidget" name="title" placeholder="Vad heter eventet? Titel?">
+                <input type="text" class="inputText formwidget" name="author" placeholder="Vad heter du?">
+                <textarea class="inputTextField formwidget" name="explenation" placeholder="Förklaring eller tankar?"></textarea>            
+                <input class="submitbutton" type="submit" value="skicka">
+                <button class="cancelFormButton" id="eventcancel">Avbryt</button>
+            </div>
+        </form>
+    </div>
+    <div id="eventList" data-url="/del">
+        <% events.reverse().forEach(function(event) {%>
+           <div class="eventBlock" id="eventblock-<%= event._id %>">
+               <div class="titleBar">
+                    <span>
+                        <h2><%= event.title %></h2>
+                        <div id="like-<%= event._id %>"><%= event.like > 0 ? `Like +${event.like}` : '' %></div>
+                        <button class="OpenBlock" id="open-<%= event._id %>">^v^</button>
+                        <button class="deletButton" id="del-<%= event._id %>"> - </button>
+                    </span>
+                    <div>
+                        <p>
+                            <%= event.explenation.length ? event.explenation : "" %>
+                        </p>
+                    </div>
+               </div>
+           </div> 
+        <% }); %>
+    </div>

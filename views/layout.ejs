@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gardfest</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% include scripts %>
+  </head>
+  <body>
+    
+    <div class="wrapper">
+        <header class="main-head">The Header</header>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="/">Index</a></li>
+                <li><a href="/register">Anmäl dig</a></li>
+                <li><a href="/admin">Admin</a></li>
+                <li><a href="/event">Event</a></li>
+            </ul>
+        </nav>
+        <aside class="leftside">LSidebar</aside>
+        <article class="content">
+            <%- body %>
+        </article>
+        <aside class="rightside">RSidebar</aside>
+        <footer class="main-footer">The footer</footer>
+    </div>
+  </body>
+</html>
