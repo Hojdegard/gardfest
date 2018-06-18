@@ -12,10 +12,14 @@ class DeleteButtonHandler{
 
     onDelButtonClick(event){
         event.preventDefault();
-        $.post(this.actionUrl, { id: event.target.id }, data => this.onSuccessfulDelete(data))
-        .fail( function() {
-            console.log('All is Lost!');
-        });
+        if(event.target.id.length > 8){
+            $.post(this.actionUrl, { id: event.target.id }, data => this.onSuccessfulDelete(data))
+            .fail( function() {
+                console.log('All is Lost!');
+            });
+        } else {
+            console.log('FakeData');
+        }
     }
 
     onSuccessfulDelete(data){

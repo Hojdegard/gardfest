@@ -4,18 +4,49 @@ const db = require('../db_handling/db');
 const eventDataModel = require('../DataModel/eventDataModel');
 const eventHandler = require('../db_handling/dbQuerys_eventData');
 
+/*
+const dataModel = ({
+        title: Title
+        , explenation: Explenation
+        , url: Url
+        , author: Author
+        , like: Like
+        , date: new Date()
+    });
+*/
+
+GetFakeData = () => {
+  let fakeArray = [];
+  
+  fakeArray.push({ _id: '1',
+  title: 'Paintboll',
+  author: 'John Doe',
+  url: '',
+  explenation: 'Skoj att skjuta',
+  like: 0});
+  
+  fakeArray.push({ _id: '2',
+  title: 'Programera',
+  author: 'Jane Deo',
+  url: '',
+  explenation: 'Ibland borde man fixa ordentligt. Istället för det här...',
+  like: 10})
+
+  return fakeArray;
+}
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if(db.IsUp){
+  if(db.IsUp()){
     eventHandler.GetAllEvents((err, event) => {
       if(err){
-        res.render('event', { events: null });
+        res.render('event', { events: GetFakeData() });
       }
 
       res.render('event', { events: event});
     })
   } else {
-    res.render('event', { events: null });
+    res.render('event', { events: GetFakeData() });
   }
 });
 
@@ -30,7 +61,7 @@ MakeEventDataModel = (body) => {
 }
 
 router.post('/add', function(req, res, next){  
-  if(db.IsUp){
+  if(db.IsUp()){
     eventHandler.AddEvent( MakeEventDataModel(req.body), (err, data) => {
       if(err){
         const retData = ({

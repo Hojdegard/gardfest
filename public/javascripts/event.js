@@ -21,7 +21,7 @@ class eventHandler extends formhandler {
                     location.reload(true);
                 })
             } else {
-                console.error(respons.msg);
+                console.error(response.msg);
             }
         }
         

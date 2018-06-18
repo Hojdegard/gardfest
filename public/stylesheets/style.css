@@ -1,60 +1,48 @@
-body {
-  padding: 50px;
+body, html {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
+  background-color: #000
 }
+ 
 
 a {
   color: #00B7FF;
 }
 
+.inputTextField,
 input[type=text], select {
-  width: 100%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin-top: 4px;
+  margin-bottom: 4px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
+.cancelFormButton,
+.showFormButton,
 input[type=submit] {
-  width: 100%;
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
-  margin: 8px 0;
+  margin-top: 4px;
+  margin-bottom: 4px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
-
-.inputTextField {
+.showFormButton
+{
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.showFormButton {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
 .cancelFormButton {
-  width: 100%;
   background-color: lightcoral;
   color: white;
   padding: 14px 20px;
-  margin: 8px 0;
+  margin-top: 4px;
+  margin-bottom: 4px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -67,37 +55,85 @@ input[type=submit] {
   margin: 2px;
 }
 
+/* The hero image */
+.hero-image {
+  /* The image used */
+  background-image: url("/image/hero.png");
+
+  /* Set a specific height */
+  width: 100%;
+  height: 100%;
+
+  /* Position and center the image to scale nicely on all screens */
+  min-height: inherit;
+  max-height: inherit;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+  text-align: center;
+  position: inherit;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+}
+
 .main-head {
   grid-area: header;
-  background-color: blueviolet;
+  min-height: 200px;
+  max-height: 450px;
+  background-color: black;
 }
 
 .content {
   grid-area: content;
-  background-color: white;
-  margin: 5px;
+  min-height: 600px;
+  background-color: lightgrey;
 }
 
 .main-nav {
   grid-area: nav;
-  background-color: blue;
+  background-color: grey;
 }
 
 .leftside {
   grid-area: leftsidebar;
-  background-color: red;
+  background-color: lightgrey;
 }
 
 .rightside {
   grid-area: rightsidebar;
-  background-color: green;
+  background-color: lightgrey;
 }
 
 .main-footer {
   grid-area: footer;
-  background-color: violet;
+  min-height: 100px;
+  background-color: lightgrey;
 }
 
+div.registerformdiv
+{
+  display: block;
+  text-align: center;
+}
+.registerform
+{
+  display: grid;
+  grid-template-columns: 2fr;
+  grid-gap: 20px;
+}
+
+div.eventformdiv
+{
+  display: none;
+  text-align: center;
+}
 .eventform {
   display: grid;
   grid-template-columns: 2fr;
@@ -122,12 +158,26 @@ input[type=submit] {
       "content"
       "rightsidebar"
       "footer";
+    grid-template-rows: 25% auto auto 10%;
   }
 
+  button,
   input,
   textarea {
     width: 100%;
     border: 1px solid #000;
+  }
+
+  .btn-group {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
   }
 }
 
@@ -143,24 +193,33 @@ input[type=submit] {
   .wrapper {
     grid-template-columns: 1fr 3fr;
     grid-template-areas: 
-      "header  header"
-      "nav     nav"
+      "header header"
+      "nav nav"
       "content content"
-      "footer  footer";
-  }
-  nav ul {
-    display: flex;
-    justify-content: space-between;
+      "footer footer";
+    grid-template-rows: 25% 50px auto 10%;
   }
 
+  button,
   input,
   textarea {
-    width: 100%;
+    width: 75%;
     border: 1px solid #000;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-group {
+    display: grid;
+    width: 75%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: auto auto auto auto;
   }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 1000px) {
   .leftside {
     display: initial;
   }
@@ -170,14 +229,24 @@ input[type=submit] {
   }
 
   .wrapper {
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: auto 1000px auto;
     grid-template-areas: 
-      "header header  header"
-      "leftsidebar    nav     rightsidebar"
+      "leftsidebar header rightsidebar"
+      "leftsidebar nav rightsidebar"
       "leftsidebar content rightsidebar"
-      "footer footer  footer"
+      "leftsidebar footer rightsidebar";
+    grid-template-rows: 25% 50px auto 10%;
    }
-   nav ul {
-     flex-direction: column;
-   }
+}
+
+.btn-group linkbutton {
+  background-color: lightgrey;
+  border: 1px solid green; /* Green border */
+  color: black; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+.btn-group linkbutton:hover {
+  background-color: #3e8e41;
 }

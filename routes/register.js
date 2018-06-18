@@ -5,7 +5,7 @@ const enroledHandler = require('../db_handling/dbQuerys_enroleData');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if(db.IsUp){
+  if(db.IsUp()){
     enroledHandler.CountAttendees((err, count) => {
       if(err){
         res.render('register', { attending: -1 });
@@ -20,19 +20,23 @@ router.get('/', function(req, res, next) {
 
 router.post('/fix', function(req, res, next){
   
-  enroledHandler.AddAttendees( req.body.name, (err, data) => {
-    if(err){
-      return res.status(500).send(err);
-    }
+  if(db.IsUp()){
+    enroledHandler.AddAttendees( req.body.name, (err, data) => {
+      if(err){
+        return res.status(500).send(err);
+      }
 
-    console.log(data);
-    const retData = ({
-        name: err ? err : req.body.name,
-        valid: err ? true : false,
-    });
+      console.log(data);
+      const retData = ({
+          name: err ? err : req.body.name,
+          valid: err ? true : false,
+      });
 
-    return res.status(200).json(retData);
-  })
+      return res.status(200).json(retData);
+    })
+  } else {
+    return res.status(500).send(err);
+  }
 });
 
 module.exports = router;

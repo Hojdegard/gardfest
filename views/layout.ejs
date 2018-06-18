@@ -3,19 +3,16 @@
   <head>
     <title>Gardfest</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <% include scripts %>
+    <% include common/scripts %>
   </head>
   <body>
     
     <div class="wrapper">
-        <header class="main-head">The Header</header>
+        <header class="main-head">
+                <% include common/head %>
+        </header>
         <nav class="main-nav">
-            <ul>
-                <li><a href="/">Index</a></li>
-                <li><a href="/register">Anmäl dig</a></li>
-                <li><a href="/admin">Admin</a></li>
-                <li><a href="/event">Event</a></li>
-            </ul>
+                <% include common/nav %>
         </nav>
         <aside class="leftside">LSidebar</aside>
         <article class="content">

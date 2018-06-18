@@ -1,12 +1,10 @@
 <div class="row">
-        <div class="col-md-12">
-            <p>Antalet anmälda: <%= attending %></p>
-            <form method="post" id="regForm" action="/register/fix">
-                <div>
+            <div class=registerformdiv>
+                <p>Antalet anmälda: <%= attending %></p>
+                <form method="post" id="regForm" class="registerform" action="/register/fix">
                     <input type="text" class="inputTextField" name="name" placeholder="Ditt namn">
-                    <input class="submitbutton" type="submit" value="Submit">
-                </div>
-            </form>
-            <div id="NewStuff"></div>
-        </div>
+                    <input class="submitbutton" type="submit" value="Jag kommer!">
+                </form>
+            </div>
+            <div id="welcomeDiv"></div>
     </div>

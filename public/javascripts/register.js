@@ -8,7 +8,7 @@ class registerHandler extends formhandler {
 
     onSubmitSuccess(response) {
         this.form.hide();
-        $('#NewStuff').html('Skoj att du kommer ' + response.name);
+        $('#welcomeDiv').html('Skoj att du kommer ' + response.name);
     }
 }
 
