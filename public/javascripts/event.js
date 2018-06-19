@@ -5,30 +5,34 @@ class eventHandler extends formhandler {
         super(formId)
         this.onSubmitSuccess = this.onSubmitSuccess.bind(this);
 
-        this.showDetailsCb = this.showDetailsCb.bind(this)
+        this.showDetailsCb = this.showDetailsCb.bind(this);
         $('.js-more').on('click', this.showDetailsCb.bind(this));
         $('.js-less').on('click', this.showDetailsCb.bind(this));
 
-        this.showFormCb = this.showFormCb.bind(this)
+        this.gillaCb = this.gillaCb.bind(this);
+        $('.upvotebutton').on('click', this.gillaCb.bind(this))
+
+        this.showFormCb = this.showFormCb.bind(this);
         $('#eventshowform').on('click', this.showFormCb.bind(this));
 
-        this.cancelFormCb = this.cancelFormCb.bind(this)
+        this.cancelFormCb = this.cancelFormCb.bind(this);
         $('#eventcancel').on('click', this.cancelFormCb.bind(this));
 
         $('#eventFormDiv').hide();
+
+        this.onLikeSuccess = this.onLikeSuccess.bind(this);
     }
 
     onSubmitSuccess(response) {
         if (response) {
             if (response.valid) {
-                $('#eventFormDiv').hide("slow", function () {
-                    location.reload(true);
-                })
+                $('#eventcancel').closest('.event-item').removeClass('open');
+                this.form[0].reset();
+                location.reload(true);
             } else {
                 console.error(response.msg);
             }
         }
-
     }
 
     showDetailsCb(event) {
@@ -45,6 +49,25 @@ class eventHandler extends formhandler {
         event.preventDefault();
         $(event.currentTarget).closest('.event-item').removeClass('open');
         this.form[0].reset();
+    }
+
+    gillaCb(event) {
+        $.post( window.location.pathname + '/like', {
+            id: event.target.id
+        }, data => this.onLikeSuccess(data))
+        .fail( function() {
+            console.log('No likes for you!');
+        });
+    }
+
+    onLikeSuccess(response) {
+        if (response) {
+            if (response.valid) {
+                location.reload(true);
+            } else {
+                console.error(response.msg);
+            }
+        }
     }
 }
 

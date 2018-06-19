@@ -8,11 +8,13 @@ GetFakeData = () => {
   fakeArray.push({ _id: '1',
   enroledName: 'John Doe',
   date: '2018-06-17T16:56:36.306Z',
-  dateString: '2018-6-17 - 18:56:36'});
+  dateString: '2018-6-17 - 18:56:36',
+  isAttending: true});
   fakeArray.push({ _id: '2',
   enroledName: 'Jane Deo',
   date: '2018-06-17T16:56:36.306Z',
-  dateString: '2018-6-17 - 18:56:36'});
+  dateString: '2018-6-17 - 18:56:36',
+  isAttending: false});
 
   return fakeArray;
 }
@@ -25,9 +27,13 @@ router.get('/', function(req, res, next) {
         res.render('admin', { attending: 0, attendees: GetFakeData() });
       }
 
-      console.log(data);
-
-      res.render('admin', { attending: data.length, attendees: data });
+      enroledHandler.CountRegistered((regErr, registered) => {
+        if(regErr){
+          res.render('admin', { attending: 0, attendees: GetFakeData() });
+        }
+        
+        res.render('admin', { attending: registered, attendees: data });
+      })      
     })
   } else {
     res.render('admin', { attending: 0, attendees: GetFakeData() });
@@ -56,7 +62,7 @@ if(!db.IsUp() || !req.body.id.startsWith(buttonPart)){
       return res.status(200).json(retData);
     } else {
       const retData = ({
-        row: `#row-${id}`,
+        row: `#js-attendee-${id}`,
         valid: deleted,
       });
     

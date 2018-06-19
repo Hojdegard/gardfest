@@ -5,14 +5,14 @@
 
 <div class="event-list" id="attendeesList" data-url="/del">
     <% attendees.forEach(function(attendee) {%>
-        <div class="attend-item">
+        <div class="attend-item" id="js-attendee-<%= attendee._id %>">
             <div class="item-head">
-                <button class="item-remove js-deleteButton" id="del-<%= attendee._id %>">X</button>
+                <button class="item-remove js-deleteButton" id="button-<%= attendee._id %>">X</button>
                 <h2 class="item-title"><%= attendee.enroledName ? attendee.enroledName : 'Okänd' %></h2>
 
                 <div class="item-attend">
                     <span><%= attendee.dateString ? attendee.dateString : '2018, typ' %></span>
-                    <span>Jag kommer</span>
+                    <span><%= attendee.isAttending == 'true' ? 'Jag kommer' : 'Inte' %></span>
                 </div>
             </div>
         </div>

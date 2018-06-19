@@ -31,7 +31,7 @@ class DeleteButtonHandler {
                 row.remove();
             })
         } else {
-            if (data.msg.length) {
+            if (data.msg !== undefined) {
                 console.log(data.msg);
             } else {
                 console.log('Nope!');
@@ -44,7 +44,7 @@ class DeleteButtonHandler {
 $(function () {
     if ($('.js-deleteButton').length) {
         if ($('#attendeesList').length) {
-            new DeleteButtonHandler('.deleteButton', '#attendeesList');
+            new DeleteButtonHandler('.js-deleteButton', '#attendeesList');
         }
         if ($('#eventList').length) {
             new DeleteButtonHandler('.js-deleteButton', '#eventList');

@@ -29,6 +29,7 @@ exports.AddEvent = (event, cb) => {
             , url: event.url
             , author: event.author
             , date: event.date
+            , like: 0
         });
         eventData.save( (err, event) => {
             if(err){
@@ -47,5 +48,22 @@ exports.DeleteEvent = (id, cb) => {
         };
 
         return cb(null, true);
+    }); 
+}
+
+exports.LikeEvent = (id, cb) => {
+    EventData.findOne({_id: id}, (err, eventnode) => {
+        if(err){
+            return cb(err);    
+        };
+
+        eventnode.like = (eventnode.like === undefined) ? 1 : eventnode.like + 1;
+        eventnode.save((saveErr) => {
+            if(saveErr){
+                return cb(saveErr);    
+            };
+
+            return cb(null, eventnode.like);
+        })
     }); 
 }

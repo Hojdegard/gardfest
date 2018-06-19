@@ -18,23 +18,32 @@ router.get('/', function(req, res, next) {
   }
 });
 
-router.post('/fix', function(req, res, next){
+router.post('/comming', function(req, res, next){
   
   if(db.IsUp()){
-    enroledHandler.AddAttendees( req.body.name, (err, data) => {
+    enroledHandler.AddAttendees( req.body.name, req.body.submited, (err, data) => {
       if(err){
         return res.status(500).send(err);
       }
+    
+      enroledHandler.CountAttendees((countErr, count) => {
+        if(countErr){
+          return res.status(500).send(err);
+        }       
+        
+        const retData = ({
+            name: countErr ? 'countErr' : req.body.name,
+            nrAttendees: count,
+            valid: countErr ? false : true,
+            isAttending: req.body.submited == 'true'
+        });
 
-      console.log(data);
-      const retData = ({
-          name: err ? err : req.body.name,
-          valid: err ? true : false,
-      });
+        console.log(retData);
+    
+        return res.status(200).json(retData);
+      })
 
-      return res.status(200).json(retData);
-    })
-  } else {
+  })} else {
     return res.status(500).send(err);
   }
 });

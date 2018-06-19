@@ -119,4 +119,36 @@ if(!req.body.id.startsWith(buttonPart)){
   }
 })
 
+router.post('/like', function(req, res, next){
+
+  const buttonPart = 'like-';
+if(!req.body.id.startsWith(buttonPart) || !db.IsUp()){
+  // Its wrong yes. But don't let them hacks this ;)
+  const retData = ({
+    valid: false,
+  });
+
+  return res.status(200).json(retData);
+} else {
+  const id = req.body.id.slice(buttonPart.length)
+  eventHandler.LikeEvent(id, (err, likesCount) => {
+    if(err){
+      const retData = ({
+        valid: false
+      });
+
+      return res.status(200).json(retData);
+    } else {
+      const retData = ({
+        event: `#like-${id}`,
+        valid: true,
+        likes: likesCount
+      });
+    
+      return res.status(200).json(retData);
+      }    
+    })
+  }
+})
+
 module.exports = router;
