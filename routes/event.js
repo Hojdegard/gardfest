@@ -1,21 +1,11 @@
+"use strict";
 var express = require('express');
 var router = express.Router();
 const db = require('../db_handling/db');
 const eventDataModel = require('../DataModel/eventDataModel');
 const eventHandler = require('../db_handling/dbQuerys_eventData');
 
-/*
-const dataModel = ({
-        title: Title
-        , explenation: Explenation
-        , url: Url
-        , author: Author
-        , like: Like
-        , date: new Date()
-    });
-*/
-
-GetFakeData = () => {
+const GetFakeData = () => {
   let fakeArray = [];
   
   fakeArray.push({ _id: '1',
@@ -50,7 +40,7 @@ router.get('/', function(req, res, next) {
   }
 });
 
-MakeEventDataModel = (body) => {
+let MakeEventDataModel = (body) => {
   return eventDataModel.CreateEventDataModel(
     body.author
     , body.title

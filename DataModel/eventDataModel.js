@@ -1,4 +1,4 @@
-
+"use strict";
 exports.CreateEventDataModel = (Author, Title, Explenation, Url, Like) => {
     const dataModel = ({
         title: Title

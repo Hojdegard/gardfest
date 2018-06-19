@@ -1,9 +1,10 @@
+"use strict";
 var express = require('express');
 var router = express.Router();
 const db = require('../db_handling/db');
 const enroledHandler = require('../db_handling/dbQuerys_enroleData');
 
-GetFakeData = () => {
+let GetFakeData = () => {
   let fakeArray = [];
   fakeArray.push({ _id: '1',
   enroledName: 'John Doe',
@@ -17,7 +18,7 @@ GetFakeData = () => {
   isAttending: false});
 
   return fakeArray;
-}
+};
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
