@@ -1,8 +1,8 @@
-class DeleteButtonHandler{
-    constructor(className, id){
+class DeleteButtonHandler {
+    constructor(className, id) {
         this.attendeeList = $(id);
         this.actionUrl = window.location.pathname + this.attendeeList.data('url');
-        
+
         $(className).on('click', this.onDelButtonClick.bind(this));
 
         this.onDelButtonClick = this.onDelButtonClick.bind(this);
@@ -10,42 +10,44 @@ class DeleteButtonHandler{
 
     }
 
-    onDelButtonClick(event){
+    onDelButtonClick(event) {
         event.preventDefault();
-        if(event.target.id.length > 8){
-            $.post(this.actionUrl, { id: event.target.id }, data => this.onSuccessfulDelete(data))
-            .fail( function() {
-                console.log('All is Lost!');
-            });
+        if (event.target.id.length > 8) {
+            $.post(this.actionUrl, {
+                    id: event.target.id
+                }, data => this.onSuccessfulDelete(data))
+                .fail(function () {
+                    console.log('All is Lost!');
+                });
         } else {
             console.log('FakeData');
         }
     }
 
-    onSuccessfulDelete(data){
-        if(data.valid){
+    onSuccessfulDelete(data) {
+        if (data.valid) {
             let row = $(data.row);
-            row.hide('slow', function(){
+            row.hide('slow', function () {
                 row.remove();
             })
         } else {
-            if(data.msg.length){
+            if (data.msg.length) {
                 console.log(data.msg);
             } else {
-            console.log('Nope!');
+                console.log('Nope!');
             }
-        }            
+        }
     }
 }
 
 
-$(function(){
-    if($('.deletButton').length){
-        if($('#attendeesList').length){
-            new DeleteButtonHandler('.deletButton', '#attendeesList');
+$(function () {
+    if ($('.js-deleteButton').length) {
+        if ($('#attendeesList').length) {
+            new DeleteButtonHandler('.deleteButton', '#attendeesList');
         }
-        if($('#eventList').length){
-            new DeleteButtonHandler('.deletButton', '#eventList');
+        if ($('#eventList').length) {
+            new DeleteButtonHandler('.js-deleteButton', '#eventList');
         }
     }
 })

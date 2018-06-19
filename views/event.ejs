@@ -1,31 +1,55 @@
-    <button class="showFormButton" id="eventshowform">Föreslå event</button>
-    <div id="eventFormDiv" class="eventformdiv">
-        <form method="post" id="eventForm" action="/event/add" class="eventform" >
-            <div>
-                <input type="text" class="inputText formwidget" name="title" placeholder="Vad heter eventet? Titel?">
-                <input type="text" class="inputText formwidget" name="author" placeholder="Vad heter du?">
-                <textarea class="inputTextField formwidget" name="explenation" placeholder="Förklaring eller tankar?"></textarea>            
-                <input class="submitbutton" type="submit" value="skicka">
-                <button class="cancelFormButton" id="eventcancel">Avbryt</button>
+<div class="text-content">
+    <h1>Vad gör vi?</h1>
+    <p>Förutom att köra fullt ös så ska det göras mer specifika prylar också såklart! Var mer och påverka vetja! :)</p>
+</div>
+
+<div class="event-list" id="eventList" data-url="/del">
+    <div class="event-item event-add">
+        <div class="item-add" id="eventshowform">
+            +
+        </div>
+        <div class="item-details item-form">
+            <form method="post" id="eventForm" action="/event/add" class="eventform" >
+                <div>
+                    <label class="input-container">
+                        <span class="input-label">Vad?</span>
+                        <input type="text" class="input-text formwidget" name="title" placeholder="Title på eventet">
+                    </label>
+
+                    <label class="input-container">
+                        <span class="input-label">Vem?</span>
+                        <input type="text" class="input-text formwidget" name="author" placeholder="Ditt namn">
+                    </label>
+
+                    <label class="input-container">
+                        <span class="input-label">Hur?</span>
+                        <textarea class="input-text input-textarea" name="explenation" placeholder="Beskrivning"></textarea>
+                    </label>
+                </div>
+                <div class="event-actions">
+                    <input class="submitbutton event-button" type="submit" value="Föreslå event">
+                    <button class="cancelFormButton event-button" id="eventcancel">Nevermind...</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <% events.reverse().forEach(function(event) {%>
+        <div class="event-item event-single" id="eventblock-<%= event._id %>">
+            <div class="item-head">
+                <button class="item-remove js-deleteButton" id="del-<%= event._id %>">X</button>
+                <h2 class="item-title"><%= event.title %></h2>
+                <div class="item-votes">
+                    <span><%= event.like > 0 ? `${event.like}st röster` : '' %></span>
+                    <button class="upvotebutton" id="like-<%= event._id %>">Jag gillar!</button>
+                </div>
+                <button class="item-more js-more">Läs mer</button>
+                <button class="item-less js-less">Dölj detaljer</button>
             </div>
-        </form>
-    </div>
-    <div id="eventList" data-url="/del">
-        <% events.reverse().forEach(function(event) {%>
-           <div class="eventBlock" id="eventblock-<%= event._id %>">
-               <div class="titleBar">
-                    <span>
-                        <h2><%= event.title %></h2>
-                        <div id="like-<%= event._id %>"><%= event.like > 0 ? `Like +${event.like}` : '' %></div>
-                        <button class="OpenBlock" id="open-<%= event._id %>">^v^</button>
-                        <button class="deletButton" id="del-<%= event._id %>"> - </button>
-                    </span>
-                    <div>
-                        <p>
-                            <%= event.explenation.length ? event.explenation : "" %>
-                        </p>
-                    </div>
-               </div>
-           </div> 
-        <% }); %>
-    </div>
+
+            <div class="item-details">
+                <p><%= event.explenation.length ? event.explenation : "" %></p>
+                <div class="item-comments"></div>
+            </div>
+        </div>
+    <% }); %>
+</div>

@@ -1,18 +1,20 @@
-<p>Antalet anmälda: <%= attending %></p>
-            <table style="width:100%" id="attendeesList" data-url="/del">
-                <col style="width:50%">
-                <col style="width:40%">
-                <col style="width:10%">
-                <tr>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Delete</th>
-                </tr>
-                <% attendees.forEach(function(attendee) {%>
-                    <tr id="row-<%= attendee._id %>">
-                        <td><%= attendee.enroledName %></td>
-                        <td><%= attendee.dateString %></td>
-                        <td><button class="deletButton" id="button-<%= attendee._id %>">Delete</button></td>
-                    </tr>
-                <% }); %>
-            </table>
+<div class="text-content">
+    <h1>All the folk!</h1>
+    <p>Stort intresse här! Hela <span class="attending"><span class="attending-number"><%= attending %></span> personer</span> har angett sitt intresse! Men hur många av dem är det som faktiskt kommer egentligen...?</p>
+</div>
+
+<div class="event-list" id="attendeesList" data-url="/del">
+    <% attendees.forEach(function(attendee) {%>
+        <div class="attend-item">
+            <div class="item-head">
+                <button class="item-remove js-deleteButton" id="del-<%= attendee._id %>">X</button>
+                <h2 class="item-title"><%= attendee.enroledName ? attendee.enroledName : 'Okänd' %></h2>
+
+                <div class="item-attend">
+                    <span><%= attendee.dateString ? attendee.dateString : '2018, typ' %></span>
+                    <span>Jag kommer</span>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+</div>

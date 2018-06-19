@@ -6,20 +6,15 @@
     <% include common/scripts %>
   </head>
   <body>
-    
+
     <div class="wrapper">
-        <header class="main-head">
-                <% include common/head %>
-        </header>
+        <header class="main-head"></header>
         <nav class="main-nav">
-                <% include common/nav %>
+          <% include common/nav %>
         </nav>
-        <aside class="leftside">LSidebar</aside>
         <article class="content">
-            <%- body %>
+          <%- body %>
         </article>
-        <aside class="rightside">RSidebar</aside>
-        <footer class="main-footer">The footer</footer>
     </div>
   </body>
 </html>

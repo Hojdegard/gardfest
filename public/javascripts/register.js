@@ -1,19 +1,19 @@
 /* formhandler */
 
 class registerHandler extends formhandler {
-    constructor(formId){
+    constructor(formId) {
         super(formId)
         this.onSubmitSuccess = this.onSubmitSuccess.bind(this);
     }
 
     onSubmitSuccess(response) {
         this.form.hide();
-        $('#welcomeDiv').html('Skoj att du kommer ' + response.name);
+        $('.js-register-name').text(response.name).parent().removeClass('hide');
     }
 }
 
-$(function() {
-    if($('#regForm').length){
+$(function () {
+    if ($('#regForm').length) {
         new registerHandler('#regForm');
     }
 });

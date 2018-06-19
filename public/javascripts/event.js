@@ -1,10 +1,14 @@
 /* formhandler */
 
 class eventHandler extends formhandler {
-    constructor(formId){
+    constructor(formId) {
         super(formId)
         this.onSubmitSuccess = this.onSubmitSuccess.bind(this);
-        
+
+        this.showDetailsCb = this.showDetailsCb.bind(this)
+        $('.js-more').on('click', this.showDetailsCb.bind(this));
+        $('.js-less').on('click', this.showDetailsCb.bind(this));
+
         this.showFormCb = this.showFormCb.bind(this)
         $('#eventshowform').on('click', this.showFormCb.bind(this));
 
@@ -15,33 +19,37 @@ class eventHandler extends formhandler {
     }
 
     onSubmitSuccess(response) {
-        if(response){
-            if(response.valid){
-                $('#eventFormDiv').hide("slow", function() {
+        if (response) {
+            if (response.valid) {
+                $('#eventFormDiv').hide("slow", function () {
                     location.reload(true);
                 })
             } else {
                 console.error(response.msg);
             }
         }
-        
+
     }
 
-    showFormCb(event){
+    showDetailsCb(event) {
         event.preventDefault();
-        $('#eventshowform').hide("slow");
-        $('#eventFormDiv').show("slow");
+        $(event.currentTarget).closest('.event-item').toggleClass('open');
     }
 
-    cancelFormCb(event){
+    showFormCb(event) {
         event.preventDefault();
-        $('#eventFormDiv').hide("slow");
-        $('#eventshowform').show("slow");
+        $(event.currentTarget).closest('.event-item').addClass('open');
+    }
+
+    cancelFormCb(event) {
+        event.preventDefault();
+        $(event.currentTarget).closest('.event-item').removeClass('open');
+        this.form[0].reset();
     }
 }
 
-$(function() {
-    if($('#eventForm').length){
+$(function () {
+    if ($('#eventForm').length) {
         new eventHandler('#eventForm');
     }
 });

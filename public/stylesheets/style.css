@@ -1,252 +1,288 @@
-body, html {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  height: 100%;
-  background-color: #000
-}
- 
-
-a {
-  color: #00B7FF;
-}
-
-.inputTextField,
-input[type=text], select {
-  padding: 12px 20px;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+* {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-.cancelFormButton,
-.showFormButton,
-input[type=submit] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.showFormButton
-{
-  width: 100%;
-}
-
-.cancelFormButton {
-  background-color: lightcoral;
-  color: white;
-  padding: 14px 20px;
-  margin-top: 4px;
-  margin-bottom: 4px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.eventBlock {
-  background-color: #00B7FF;
-  color: darkblue;
-  border-radius: 4px;
-  margin: 2px;
-}
-
-/* The hero image */
-.hero-image {
-  /* The image used */
-  background-image: url("/image/hero.png");
-
-  /* Set a specific height */
-  width: 100%;
+body,
+html {
+  font: 16px "Avenir Next", "Avenir", "Lucida Grande", Helvetica, Arial, sans-serif;
   height: 100%;
-
-  /* Position and center the image to scale nicely on all screens */
-  min-height: inherit;
-  max-height: inherit;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
+  color: #F5E8ED;
+  background-color: #141D1A;
+  margin: 0;
 }
 
-/* Place text in the middle of the image */
-.hero-text {
-  text-align: center;
-  position: inherit;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: black;
+.hide {
+  display: none !important;
 }
 
 .main-head {
-  grid-area: header;
-  min-height: 200px;
-  max-height: 450px;
-  background-color: black;
-}
-
-.content {
-  grid-area: content;
-  min-height: 600px;
-  background-color: lightgrey;
+  height: 250px;
+  background-image: url("/image/sparkles.jpg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .main-nav {
-  grid-area: nav;
-  background-color: grey;
+  background-color: #FFA352;
+  color: #141D1A;
+  padding: 20px;
+  text-align: center;
 }
 
-.leftside {
-  grid-area: leftsidebar;
-  background-color: lightgrey;
+.nav-link {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 5px 10px;
+  color: #141D1A;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
 }
 
-.rightside {
-  grid-area: rightsidebar;
-  background-color: lightgrey;
+.nav-link.active {
+  font-weight: bold;
+  border-bottom-color: #141D1A;
 }
 
-.main-footer {
-  grid-area: footer;
+h1 {
+  font-weight: 900;
+  font-size: 36px;
+  text-align: center;
+}
+
+.text-content {
+  max-width: 500px;
+  margin: 30px auto;
+}
+
+.text-content a {
+  color: #FFA352;
+}
+
+.default-table {
+  border: 0;
+}
+
+.table-label {
+  font-weight: bold;
+  padding-right: 20px;
+}
+
+.attending {
+  color: #FFA352;
+}
+
+.attending-number {
+  font-weight: 900;
+}
+
+.registerform {
+  max-width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px auto;
+}
+
+.inputTextField {
+  width: 100%;
+  min-height: 42px;
+  padding: 2px 10px;
+  border: 3px solid #DD4C3F;
+}
+
+.formactions {
+  display: flex;
+  flex: 1;
+}
+
+button,
+input,
+textarea {
+  background: transparent;
+  border: 0;
+  font-size: 16px;
+  font-family: "Avenir Next", "Avenir", "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #F5E8ED;
+}
+
+.submitbutton {
+  background: #DD4C3F;
+  padding: 10px 20px;
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+}
+
+.cancelbutton {
+  flex: 1;
+  color: #DD4C3F;
+  text-align: center;
+}
+
+.registerform-response {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #DD4C3F;
+  min-height: 84px;
+  color: #DD4C3F;
+}
+
+.event-date {
+  font-weight: bold;
+}
+
+.event-list {
+  max-width: 620px;
+  margin: 10px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.event-item,
+.attend-item {
+  width: 300px;
+  color: #DD4C3F;
+  border: 3px solid #DD4C3F;
   min-height: 100px;
-  background-color: lightgrey;
 }
 
-div.registerformdiv
-{
+.attend-item {
+  min-height: 80px;
+}
+
+.attend-item .item-head {
+  padding-bottom: 10px;
+}
+
+.event-add {
+  position: relative;
+}
+
+.item-add {
+  font-size: 105px;
+  line-height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.item-head {
+  position: relative;
+  padding: 10px 10px 30px;
+}
+
+.item-remove {
+  color: #FFA352;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.item-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: #DD4C3F;
+  margin: 0;
+}
+
+.item-more,
+.item-less {
+  color: #141D1A;
+  background: #DD4C3F;
   display: block;
-  text-align: center;
-}
-.registerform
-{
-  display: grid;
-  grid-template-columns: 2fr;
-  grid-gap: 20px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-top: 3px;
 }
 
-div.eventformdiv
-{
+.item-less {
   display: none;
-  text-align: center;
-}
-.eventform {
-  display: grid;
-  grid-template-columns: 2fr;
-  grid-gap: 20px;
 }
 
-@media (min-width: 0px) {
-  .leftside {
-    display: none;
-  }
-
-  .rightside {
-    display: none;
-  }
-
-  .wrapper {
-    display: grid;
-    grid-template-areas: 
-      "header"
-      "nav"
-      "leftsidebar"
-      "content"
-      "rightsidebar"
-      "footer";
-    grid-template-rows: 25% auto auto 10%;
-  }
-
-  button,
-  input,
-  textarea {
-    width: 100%;
-    border: 1px solid #000;
-  }
-
-  .btn-group {
-    display: grid;
-    width: 100%;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-  }
+.open .item-less {
+  display: block;
 }
 
-@media (min-width: 500px) {
-  .leftside {
-    display: none;
-  }
-
-  .rightside {
-    display: none;
-  }
-
-  .wrapper {
-    grid-template-columns: 1fr 3fr;
-    grid-template-areas: 
-      "header header"
-      "nav nav"
-      "content content"
-      "footer footer";
-    grid-template-rows: 25% 50px auto 10%;
-  }
-
-  button,
-  input,
-  textarea {
-    width: 75%;
-    border: 1px solid #000;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .btn-group {
-    display: grid;
-    width: 75%;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    grid-template-columns: auto auto auto auto;
-  }
+.open .item-more {
+  display: none;
 }
 
-@media (min-width: 1000px) {
-  .leftside {
-    display: initial;
-  }
-
-  .rightside {
-    display: initial;
-  }
-
-  .wrapper {
-    grid-template-columns: auto 1000px auto;
-    grid-template-areas: 
-      "leftsidebar header rightsidebar"
-      "leftsidebar nav rightsidebar"
-      "leftsidebar content rightsidebar"
-      "leftsidebar footer rightsidebar";
-    grid-template-rows: 25% 50px auto 10%;
-   }
+.item-votes,
+.item-attend {
+  color: #F5E8ED;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0 10px;
 }
 
-.btn-group linkbutton {
-  background-color: lightgrey;
-  border: 1px solid green; /* Green border */
-  color: black; /* White text */
-  padding: 10px 24px; /* Some padding */
-  cursor: pointer; /* Pointer/hand icon */
-  float: left; /* Float the buttons side by side */
+.upvotebutton {
+  border: 1px solid #FFA352;
+  color: #FFA352;
+  padding: 3px 10px;
 }
-.btn-group linkbutton:hover {
-  background-color: #3e8e41;
+
+.event-item.open {
+  width: 100%;
+  grid-column: 1 / span 2;
+}
+
+.item-details {
+  padding: 10px;
+  max-width: 500px;
+  margin: 0 auto;
+  color: #F5E8ED;
+  display: none;
+}
+
+.open .item-details {
+  display: block;
+}
+
+.open .item-add {
+  display: none;
+}
+
+.input-container {
+  display: flex;
+  margin: 5px;
+}
+
+.input-label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.input-text {
+  border: 2px solid #DD4C3F;
+  flex: 5;
+  padding: 3px 10px;
+  height: 42px;
+}
+
+.input-textarea {
+  height: 70px;
+}
+
+.event-actions {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.event-button {
+  flex: 1;
+}
+
+.item-form {
+  padding-bottom: 60px;
 }
