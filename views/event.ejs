@@ -41,7 +41,7 @@
                 <% }%>
                 <h2 class="item-title"><%= event.title %></h2>
                 <div class="item-votes">
-                    <span><%= event.like > 0 ? `${event.like}st röster` : '' %></span>
+                    <span id="likes-<%= event._id %>"><%= event.like > 0 ? `${event.like} gillar!` : '' %></span>
                     <button class="upvotebutton" id="like-<%= event._id %>">Jag gillar!</button>
                 </div>
                 <button class="item-more js-more">Läs mer</button>

@@ -135,9 +135,9 @@ if(!req.body.id.startsWith(buttonPart) || !db.IsUp()){
       return res.status(200).json(retData);
     } else {
       const retData = ({
-        event: `#like-${id}`,
+        span: `#likes-${id}`,
         valid: true,
-        likes: likesCount
+        likes: `${likesCount} gillar!`
       });
     
       return res.status(200).json(retData);

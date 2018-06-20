@@ -52,6 +52,8 @@ class eventHandler extends formhandler {
     }
 
     gillaCb(event) {
+        event.preventDefault();
+        event.target.style.visibility = 'hidden';
         $.post( window.location.pathname + '/like', {
             id: event.target.id
         }, data => this.onLikeSuccess(data))
@@ -63,7 +65,7 @@ class eventHandler extends formhandler {
     onLikeSuccess(response) {
         if (response) {
             if (response.valid) {
-                location.reload(true);
+                $(response.span).text(response.likes)
             } else {
                 console.error(response.msg);
             }
