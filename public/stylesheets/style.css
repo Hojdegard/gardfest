@@ -17,7 +17,7 @@ html {
 }
 
 .main-head {
-  height: 250px;
+  height: 150px;
   background-image: url("/image/sparkles.jpg");
   background-size: contain;
   background-position: center;
@@ -43,6 +43,10 @@ html {
 .nav-link.active {
   font-weight: bold;
   border-bottom-color: #141D1A;
+}
+
+.content {
+  padding: 15px;
 }
 
 h1 {
@@ -136,17 +140,14 @@ textarea {
 .event-list {
   max-width: 620px;
   margin: 10px auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
 }
 
 .event-item,
 .attend-item {
-  width: 300px;
   color: #DD4C3F;
   border: 3px solid #DD4C3F;
   min-height: 100px;
+  margin: 10px 0;
 }
 
 .attend-item {
@@ -233,6 +234,12 @@ textarea {
   grid-column: 1 / span 2;
 }
 
+.event-add.open {
+  margin-left: -15px;
+  margin-right: -15px;
+  width: calc(100% + 30px);
+}
+
 .item-details {
   padding: 10px;
   max-width: 500px;
@@ -258,6 +265,7 @@ textarea {
   flex: 1;
   display: flex;
   align-items: center;
+  padding-right: 10px;
 }
 
 .input-text {
@@ -285,4 +293,20 @@ textarea {
 
 .item-form {
   padding-bottom: 60px;
+}
+
+@media (min-width: 768px) {
+  .main-head {
+    height: 250px;
+  }
+  .event-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+  .event-item,
+  .attend-item {
+    width: 300px;
+    margin: 0;
+  }
 }
