@@ -36,7 +36,9 @@
     <% events.reverse().forEach(function(event) {%>
         <div class="event-item event-single" id="eventblock-<%= event._id %>">
             <div class="item-head">
-                <button class="item-remove js-deleteButton" id="del-<%= event._id %>">X</button>
+                <% if(admin){ %>
+                    <button class="item-remove js-deleteButton" id="del-<%= event._id %>">X</button>
+                <% }%>
                 <h2 class="item-title"><%= event.title %></h2>
                 <div class="item-votes">
                     <span><%= event.like > 0 ? `${event.like}st röster` : '' %></span>

@@ -25,19 +25,19 @@ router.get('/', function(req, res, next) {
   if(db.IsUp()){
     enroledHandler.GetAllAttendees((err, data) => {
       if(err){
-        res.render('admin', { attending: 0, attendees: GetFakeData() });
+        res.render('admin', { attending: 0, attendees: GetFakeData(), admin: req.query.admin === 'true' });
       }
 
       enroledHandler.CountRegistered((regErr, registered) => {
         if(regErr){
-          res.render('admin', { attending: 0, attendees: GetFakeData() });
+          res.render('admin', { attending: 0, attendees: GetFakeData(), admin: req.query.admin === 'true' });
         }
         
-        res.render('admin', { attending: registered, attendees: data });
+        res.render('admin', { attending: registered, attendees: data, admin: req.query.admin === 'true' });
       })      
     })
   } else {
-    res.render('admin', { attending: 0, attendees: GetFakeData() });
+    res.render('admin', { attending: 0, attendees: GetFakeData(), admin: req.query.admin === 'true' });
   }
 });
 

@@ -7,7 +7,9 @@
     <% attendees.forEach(function(attendee) {%>
         <div class="attend-item" id="js-attendee-<%= attendee._id %>">
             <div class="item-head">
-                <button class="item-remove js-deleteButton" id="button-<%= attendee._id %>">X</button>
+                <% if(admin){ %>
+                    <button class="item-remove js-deleteButton" id="button-<%= attendee._id %>">X</button>
+                <% }%>
                 <h2 class="item-title"><%= attendee.enroledName ? attendee.enroledName : 'Okänd' %></h2>
 
                 <div class="item-attend">
