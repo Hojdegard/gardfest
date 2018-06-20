@@ -1,12 +1,13 @@
 <div class="text-content">
     <h1>Kom igen, det blir kul!</h1>
-    <p>Vi är just nu <span class="attending"><span class="attending-number"><%= attending %></span> personer</span> som ska ha kul tillsammans. Klart du också ska med!</p>
+    <p>Vi är just nu <span class="attending"><span class="attending-number"><%= attending %></span> personer</span> som ska ha kul tillsammans. Klart du också ska med den 25:e augusti!</p>
     <form method="post" id="regForm" class="registerform" action="/register/comming">
         <input type="text" class="inputTextField" name="name" placeholder="Ditt namn">
         <div class="formactions">
             <input class="submitbutton" type="submit" value="Jag kommer!">
             <button class="cancelbutton" type="button" id="js-willNotAttendButton">Jag kan inte...</button>
         </div>
+        <p>Skriv gärna upp dig även om du inte kommer. Listan över anmälda är för oss och kommer rensas efter eventet.</p>
     </form>
     <div class="registerform-response hide" id="js-comming-greeting">
         <p>Fantastiskt, <span class="js-register-name">Fredrik</span>! Ses den <span class="event-date">25 augusti 2018</span>!</p>
