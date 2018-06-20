@@ -28,11 +28,6 @@ const GetFakeData = () => {
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if(db.IsUp()){
-    if(req.query.admin === 'true')    {
-      console.log('Admin!')
-    } else {
-      console.log('Not!')
-    }
     eventHandler.GetAllEvents((err, event) => {
       if(err){
         res.render('event', { events: GetFakeData(), admin: req.query.admin === 'true' });
