@@ -22,11 +22,17 @@ class formhandler {
         var formData =this.form.serializeArray();
         if(this.cancelButton.length){
             formData.push({name: 'submited', value: event.target.id !== this.cancelButton.get(0).id});
-        }        
-        $.post(this.actionurl, formData, data => this.onSubmitSuccess(data))
-        .fail( function() {
-            console.log('All is Lost!');
-        });
+        }
+        if($('#register-name').length && $('#register-name')[0].value.length < 2){
+            $('#register-name')[0].value = '';
+            $('#register-name')[0].placeholder='Du måste skriva ditt namn här'
+        } else {
+            $.post(this.actionurl, formData, data => this.onSubmitSuccess(data))
+            .fail( function() {
+                console.log('All is Lost!');
+            });
+        }       
+        
     }
 
     onSubmitSuccess(response) {

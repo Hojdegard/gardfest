@@ -2,7 +2,7 @@
     <h1>Kom igen, det blir kul!</h1>
     <p>Vi är just nu <span class="attending"><span class="attending-number"><%= attending %></span> personer</span> som ska ha kul tillsammans. Klart du också ska med den 25:e augusti!</p>
     <form method="post" id="regForm" class="registerform" action="/register/comming">
-        <input type="text" class="inputTextField" name="name" placeholder="Ditt namn">
+        <input type="text" class="inputTextField" id="register-name" name="name" placeholder="Ditt namn">
         <div class="formactions">
             <input class="submitbutton" type="submit" value="Jag kommer!">
             <button class="cancelbutton" type="button" id="js-willNotAttendButton">Jag kan inte...</button>
