@@ -12,6 +12,7 @@ var usersRouter = require('./routes/users');
 var registerRouter = require('./routes/register');
 var adminRouter = require('./routes/admin');
 var eventRouter = require('./routes/event');
+var scheduleRouter = require('./routes/schedule');
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use('/users', usersRouter);
 app.use('/register', registerRouter);
 app.use('/admin', adminRouter);
 app.use('/event', eventRouter);
+app.use('/schedule', scheduleRouter);
 
 // robots.txt
 app.get('/robots.txt', function (req, res) {
